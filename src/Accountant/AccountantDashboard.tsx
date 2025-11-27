@@ -3,14 +3,16 @@ import { useTheme } from "../components/ThemeContext";
 import { AccountantSidebar } from "./AccountantSidebar";
 import { AccountantTopBar } from "./AccountantTopBar";
 import { AccountantDashboardContent } from "./AccountantDashboardContent";
+import { User } from "../services/authService";
 
 interface AccountantDashboardProps {
   onLogout: () => void;
+  user: User;
 }
 
 export type AccountantView = "dashboard" | "member-records" | "savings-entry" | "loan-management" | "share-allocation" | "reports" | "settings";
 
-export function AccountantDashboard({ onLogout }: AccountantDashboardProps) {
+export function AccountantDashboard({ onLogout, user }: AccountantDashboardProps) {
   const [activeView, setActiveView] = useState<AccountantView>("dashboard");
   const { theme } = useTheme();
 
